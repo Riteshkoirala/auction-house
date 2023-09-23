@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->unsignedBigInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('lot_id')->nullable(false);
+            $table->foreign('lot_id')->references('id')->on('lots');
             $table->string('lot_number')->nullable(false);
             $table->string('name_of_artist')->nullable(false);
             $table->year('year_work_produced')->nullable(false);
@@ -27,9 +30,12 @@ return new class extends Migration
             $table->string('image_type')->nullable();
             $table->string('dimension')->nullable();
             $table->string('drawing_medium')->nullable();
-            $table->boolean('framed')->nullable();
+            $table->string('painting_medium')->nullable();
+            $table->string('framed')->nullable();
             $table->string('material_used')->nullable();
             $table->double('weight')->nullable();
+            $table->string('image_name');
+            $table->boolean('in_auction')->default('0');
             $table->timestamps();
             $table->softDeletes();
         });

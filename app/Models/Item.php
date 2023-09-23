@@ -12,6 +12,8 @@ class Item extends Model
 
     protected $fillable = [
         'user_id',
+        'title',
+        'lot_id',
         'lot_number',
         'name_of_artist',
         'year_work_produced',
@@ -24,8 +26,11 @@ class Item extends Model
         'image_type',
         'dimension',
         'drawing_medium',
+        'painting_medium',
         'framed',
         'material_used',
         'weight',
+        'image_name',
+        'in_auction',
     ];
 }

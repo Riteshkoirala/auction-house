@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LotController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('auction',AuctionController::class);
+    Route::resource('lot',LotController::class);
+    Route::resource('items',ItemController::class);
+    Route::get('update/item/{item}',[ItemController::class, 'archiveItem'])->name('item.up');
+    Route::get('update/lot/{lot}',[LotController::class, 'archiveItem'])->name('lot.up');
+    Route::get('update/auction/{auction}',[AuctionController::class, 'archiveItem'])->name('auction.up');
+
 });
 
 require __DIR__.'/auth.php';
